@@ -302,7 +302,7 @@ header {
 
 .gallery-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 20px;
 }
 
@@ -361,7 +361,7 @@ header {
 .artist-img {
     flex: 1;
     height: 500px;
-    background: url('../img/TabataCartagena/EmojiTabata.png') no-repeat center bottom / contain;
+    background: url('../img/trabajadoras/EmojiTabata.png') no-repeat center bottom / contain;
 }
 
 .artist-content {
@@ -380,6 +380,25 @@ header {
     color: #555;
     margin-bottom: 30px;
     max-width: 500px;
+}
+
+.artist-home.reverse {
+    flex-direction: row-reverse;
+    background-color: var(--white);
+}
+
+.artist-home.reverse .artist-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    /* Keep content block to the right (closer to image) */
+    text-align: left;
+    /* But align text inside to the left */
+}
+
+.artist-img.danelly {
+    background: url('../img/trabajadoras/EmojiDanelly.png') no-repeat center bottom / contain;
 }
 
 /* Service Category & Price List (moved from nested) */
@@ -548,4 +567,31 @@ footer {
     .contact-page-grid {
         grid-template-columns: 1fr;
     }
+}
+
+/* Gallery Filter */
+.gallery-filter {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.filter-btn {
+    padding: 8px 20px;
+    background-color: transparent;
+    border: 1px solid var(--chocolate);
+    color: var(--chocolate);
+    cursor: pointer;
+    font-family: var(--font-main);
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border-radius: 20px;
+    font-size: 0.9rem;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+    background-color: var(--chocolate);
+    color: var(--white);
 }
