@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }, observerOptions);
 
-    const revealElements = document.querySelectorAll('.service-item, .gallery-brick, .section-title, .contact-item, .hero-content, .artist-content, .price-item');
+    const revealElements = document.querySelectorAll('.service-item, .gallery-item, .section-title, .contact-item, .hero-content, .artist-content, .price-item');
 
     revealElements.forEach(el => {
         el.style.opacity = '0';

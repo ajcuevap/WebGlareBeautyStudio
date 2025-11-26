@@ -31,9 +31,7 @@
         </div>
     </header>
 
-    <br>
-    <br>
-    <section class="page-header">
+    <section class="page-header mt-50">
         <div class="container">
             <span class="section-subtitle">Visítanos</span>
             <h1>Contacto & Ubicación</h1>
@@ -46,37 +44,36 @@
                 <div class="contact-item">
                     <i class="fas fa-map-marker-alt"></i>
                     <h4>Dirección</h4>
-                    <p>Calles Abdón Calderón y Juan Montalvo 8-09<br>Otavalo, Imbabura, Ecuador</p>
+                    <p>Calle Bolívar 8-09 entre Abdón Calderón y Juan Montalvo, edifico SportCiman 2do
+                        piso<br><br>Otavalo,
+                        Imbabura, Ecuador</p>
                 </div>
                 <!-- WhatsApp Buttons -->
-                <div style="margin-top: 40px; display: flex; flex-direction: column; gap: 20px;">
-                    <a href="https://w.app/glarebeautystudio" class="btn" target="_blank"
-                        style="text-align: center;">Reserva tu Cita</a>
-                    <a href="https://w.app/glarebeautystudio" class="btn btn-outline" target="_blank"
-                        style="text-align: center;">Comunícate con Nosotros</a>
+                <div class="contact-buttons">
+                    <a href="https://w.app/glarebeautystudio" class="btn" target="_blank">Reserva tu Cita</a>
                 </div>
             </div>
 
             <div class="contact-form-wrapper">
                 <h3>Envíanos un Mensaje</h3>
-                <form style="margin-top: 30px;">
-                    <div style="margin-bottom: 20px;">
-                        <input type="text" placeholder="Nombre"
-                            style="width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 5px;">
+                <form action="https://formsubmit.co/beautystudioglare0@gmail.com" method="POST">
+                    <!-- Configuración oculta para FormSubmit -->
+                    <input type="hidden" name="_subject" value="Nuevo mensaje de contacto - Glare Beauty Studio">
+                    <input type="hidden" name="_template" value="table">
+
+                    <div>
+                        <input type="text" name="nombre" placeholder="Nombre" required>
                     </div>
-                    <div style="margin-bottom: 20px;">
-                        <input type="email" placeholder="Email"
-                            style="width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 5px;">
+                    <div>
+                        <input type="email" name="email" placeholder="Email" required>
                     </div>
-                    <div style="margin-bottom: 20px;">
-                        <input type="tel" placeholder="Teléfono"
-                            style="width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 5px;">
+                    <div>
+                        <input type="tel" name="telefono" placeholder="Teléfono">
                     </div>
-                    <div style="margin-bottom: 20px;">
-                        <textarea rows="5" placeholder="Mensaje"
-                            style="width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 5px;"></textarea>
+                    <div>
+                        <textarea name="mensaje" rows="5" placeholder="Mensaje" required></textarea>
                     </div>
-                    <button type="submit" class="btn">Enviar</button>
+                    <button type="submit" class="btn">Enviar Mensaje</button>
                 </form>
             </div>
         </div>
@@ -87,7 +84,7 @@
             <div class="footer-grid">
                 <div class="footer-col">
                     <h4>Glare Beauty Studio</h4>
-                    <p style="color: #ccc; font-size: 0.9rem;">
+                    <p class="text-muted-small">
                         Calle Bolívar 8-09 entre Abdón Calderón y Juan Montalvo, edifico SportCiman 2do piso<br>
                         <br>
                         Otavalo, Imbabura, Ecuador<br>
