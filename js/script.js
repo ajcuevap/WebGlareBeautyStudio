@@ -68,4 +68,28 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
+
+    // Promo Widget Logic
+    const promoBtn = document.getElementById('promo-btn');
+    const promoPopup = document.getElementById('promo-popup');
+    const closePromo = document.getElementById('close-promo');
+
+    if (promoBtn && promoPopup && closePromo) {
+        // Toggle on main button click
+        promoBtn.addEventListener('click', () => {
+            promoPopup.classList.toggle('hidden');
+        });
+
+        // Close button logic
+        closePromo.addEventListener('click', () => {
+            promoPopup.classList.add('hidden');
+        });
+
+        // Optional: Auto open after 3 seconds for first engagement
+        setTimeout(() => {
+            // Check if user hasn't closed it before? For simple usage, just open once.
+            // promoPopup.classList.remove('hidden'); 
+            // Commented out to avoid being annoying, user can choose to click.
+        }, 3000);
+    }
 });
