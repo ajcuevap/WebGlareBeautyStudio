@@ -394,6 +394,10 @@ header {
     background: url('../img/trabajadoras/EmojiTabata.png') no-repeat center bottom / contain;
 }
 
+.artist-img.danelly {
+    background-image: url('../img/trabajadoras/EmojiDanelly.png');
+}
+
 .artist-content {
     flex: 1;
     padding: 80px;
