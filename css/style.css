@@ -78,6 +78,9 @@ img {
     padding: 60px 0;
 }
 
+/* Typography */
+/* Styles for h1, h2, h3 are inherited from the generic block at line 38, or were not specifically overridden with gradients before this change. So we remove the gradient block essentially. */
+
 .btn {
     display: inline-block;
     padding: 12px 30px;
@@ -152,16 +155,20 @@ img {
 
 /* Header - Leonora Style (Clean, Centered or Split) */
 header {
-    background-color: rgba(255, 255, 255, 0.95);
-    /* Slightly transparent */
-    backdrop-filter: blur(10px);
-    /* Glassmorphism */
+    background-color: rgba(255, 255, 255, 0.8);
+    /* More transparent */
+    backdrop-filter: blur(20px);
+    /* Stronger blur */
+    -webkit-backdrop-filter: blur(20px);
     position: sticky;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-    padding: 10px 0;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03);
+    /* Very subtle shadow */
+    padding: 15px 0;
+    /* Slightly more height */
     transition: all 0.3s ease;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .navbar {
@@ -304,17 +311,26 @@ header {
 }
 
 .service-item {
-    background-color: var(--white);
-    padding: 30px;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    padding: 40px 30px;
+    /* More padding for luxury feel */
     text-align: center;
-    border-radius: 10px;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
-    transition: all 0.3s ease;
+    border-radius: 20px;
+    /* Softer curves */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    /* Softer, deeper shadow */
+    transition: all 0.4s ease;
 }
 
 .service-item:hover {
     transform: translateY(-10px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 20px 40px rgba(212, 154, 154, 0.2);
+    /* Rose tinted shadow on hover */
+    border-color: rgba(255, 255, 255, 0.8);
 }
 
 .service-icon {
@@ -745,4 +761,3 @@ footer {
     background-color: var(--chocolate);
     color: var(--white);
 }
-
