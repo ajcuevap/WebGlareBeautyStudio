@@ -1,0 +1,75 @@
+{
+  "marca": {
+    "nombre": "Glare Beauty Studio",
+    "eslogan": "Donde la belleza se encuentra con el arte.",
+    "descripcion": "En Glare Beauty Studio resaltamos tu belleza natural con técnicas avanzadas y productos de alta calidad. Un ambiente relajante y profesional te espera en Otavalo."
+  },
+  "contacto": {
+    "whatsapp": "593967929097",
+    "email": "beautystudioglare0@gmail.com",
+    "direccion": "Calle Bolívar 8-09 entre Abdón Calderón y Juan Montalvo, edificio SportCiman, 2do piso. Otavalo, Imbabura, Ecuador",
+    "mapa": "https://maps.app.goo.gl/5fciF3PKm6HnDRLV9",
+    "instagram": "https://www.instagram.com/glare.beauty.studio/",
+    "facebook": "https://www.facebook.com/profile.php?id=61568508326426",
+    "tiktok": "https://www.tiktok.com/@glare.beauty.studio"
+  },
+  "horario": {
+    "lunes": { "inicio": "09:00", "fin": "19:00" },
+    "martes": { "inicio": "09:00", "fin": "19:00" },
+    "miercoles": { "inicio": "09:00", "fin": "19:00" },
+    "jueves": { "inicio": "09:00", "fin": "19:00" },
+    "viernes": { "inicio": "09:00", "fin": "19:00" },
+    "sabado": { "inicio": "09:00", "fin": "17:00" },
+    "domingo": null
+  },
+  "servicios": [
+    { "id": "unas-acrilicas", "categoria": "Uñas", "nombre": "Uñas acrílicas", "descripcion": "Esculturales o con tip, acabado natural o color.", "precio": null, "duracionMinutos": null },
+    { "id": "polygel", "categoria": "Uñas", "nombre": "Polygel", "descripcion": "Técnica híbrida, ligera y resistente.", "precio": null, "duracionMinutos": null },
+    { "id": "softgel", "categoria": "Uñas", "nombre": "Softgel", "descripcion": "Tips completos de gel, aplicación rápida y resistente.", "precio": null, "duracionMinutos": null },
+    { "id": "semipermanente", "categoria": "Uñas", "nombre": "Semipermanente", "descripcion": "Esmaltado de larga duración sobre uña natural.", "precio": null, "duracionMinutos": null },
+    { "id": "lifting-pestanas", "categoria": "Pestañas", "nombre": "Lifting de pestañas", "descripcion": "Elevación natural de tus propias pestañas.", "precio": null, "duracionMinutos": null },
+    { "id": "extensiones-pelo-a-pelo", "categoria": "Pestañas", "nombre": "Extensiones pelo a pelo", "descripcion": "Efecto personalizado, una o varias extensiones sobre cada pestaña natural.", "precio": null, "duracionMinutos": null },
+    { "id": "diseno-depilacion-cejas", "categoria": "Cejas", "nombre": "Diseño y depilación", "descripcion": "Perfilado según tu rostro con cera o hilo.", "precio": null, "duracionMinutos": null },
+    { "id": "laminado-cejas", "categoria": "Cejas", "nombre": "Laminado de cejas", "descripcion": "Alisado y fijación para unas cejas más definidas y ordenadas.", "precio": null, "duracionMinutos": null },
+    { "id": "henna-cejas", "categoria": "Cejas", "nombre": "Henna", "descripcion": "Pigmentación con henna.", "precio": null, "duracionMinutos": null },
+    { "id": "maquillaje-social", "categoria": "Maquillaje", "nombre": "Maquillaje social", "descripcion": "Para eventos de día o de noche.", "precio": null, "duracionMinutos": null },
+    { "id": "maquillaje-novia", "categoria": "Maquillaje", "nombre": "Maquillaje de novia", "descripcion": "Paquete especial para tu gran día.", "precio": null, "duracionMinutos": null },
+    { "id": "maquillaje-editorial", "categoria": "Maquillaje", "nombre": "Maquillaje editorial", "descripcion": "Diseñado para destacar en fotografías.", "precio": null, "duracionMinutos": null },
+    { "id": "limpieza-facial-simple", "categoria": "Facial", "nombre": "Limpieza facial simple", "descripcion": "Limpieza básica para refrescar la piel.", "precio": null, "duracionMinutos": null },
+    { "id": "limpieza-facial-profunda", "categoria": "Facial", "nombre": "Limpieza facial profunda", "descripcion": "Limpieza intensiva para desintoxicar y retirar impurezas.", "precio": null, "duracionMinutos": null }
+  ],
+  "galeria": [
+    { "id": "unas-1", "src": "img/galeria/unas-1.webp", "categoria": "Uñas", "titulo": "Uñas acrílicas" },
+    { "id": "maquillaje-1", "src": "img/galeria/maquillaje-1.webp", "categoria": "Maquillaje", "titulo": "Maquillaje social" },
+    { "id": "unas-2", "src": "img/galeria/unas-2.webp", "categoria": "Uñas", "titulo": "Nail art" },
+    { "id": "pestanas-1", "src": "img/galeria/pestanas-1.webp", "categoria": "Pestañas", "titulo": "Lifting de pestañas" },
+    { "id": "unas-3", "src": "img/galeria/unas-3.webp", "categoria": "Uñas", "titulo": "Manicura rusa" },
+    { "id": "facial-1", "src": "img/galeria/facial-1.webp", "categoria": "Facial", "titulo": "Limpieza facial" },
+    { "id": "unas-4", "src": "img/galeria/unas-4.webp", "categoria": "Uñas", "titulo": "Diseño a mano alzada" },
+    { "id": "cejas-1", "src": "img/galeria/cejas-1.webp", "categoria": "Cejas", "titulo": "Diseño de cejas" },
+    { "id": "unas-5", "src": "img/galeria/unas-5.webp", "categoria": "Uñas", "titulo": "Acabado natural" }
+  ],
+  "equipo": [
+    {
+      "id": "tabata",
+      "nombre": "Tabata Cartagena",
+      "rol": "Especialista en uñas, lashista y cosmetóloga",
+      "bio": "Mi pasión es crear arte y belleza en cada detalle. Con años de experiencia y capacitación constante, garantizo resultados que superan tus expectativas.",
+      "foto": "img/equipo/tabata.webp"
+    },
+    {
+      "id": "danelly",
+      "nombre": "Danelly Arteaga",
+      "rol": "Maquilladora profesional y brow artist",
+      "bio": "Apasionada por resaltar tu esencia única. Con una sólida visión estética y dominio de las últimas tendencias, diseño looks que empoderan y transforman.",
+      "foto": "img/equipo/danelly.webp"
+    }
+  ],
+  "preguntas": [
+    { "pregunta": "¿Dónde queda el local?", "respuesta": "Estamos en Bolívar 8-09 y Juan Montalvo, edificio SportCiman, 2do piso, en Otavalo." },
+    { "pregunta": "¿Qué formas de pago aceptan?", "respuesta": "Aceptamos efectivo y transferencia bancaria." },
+    { "pregunta": "¿Cómo cancelo o cambio mi cita?", "respuesta": "Escríbenos por WhatsApp que quieres cancelar o cambiar tu cita y te ayudamos con gusto." }
+  ],
+  "panelUrl": "https://glare-chatbot.onrender.com/panel/#web",
+  "actualizado": "2026-11-12T12:00:00-05:00"
+}

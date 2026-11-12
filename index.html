@@ -1,218 +1,197 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Glare Beauty Studio | Inicio</title>
-    <meta name="description"
-        content="Glare Beauty Studio en Otavalo. Especialistas en uñas acrílicas, lifting de pestañas, limpieza facial y maquillaje profesional. Reserva tu cita hoy.">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Glare Beauty Studio · Uñas, pestañas, cejas y maquillaje en Otavalo</title>
+<meta name="description" content="Estudio de belleza en Otavalo: uñas acrílicas, polygel, lifting de pestañas, cejas, maquillaje y limpieza facial. Reserva tu cita por WhatsApp.">
+<meta name="theme-color" content="#FDF2F5">
+<link rel="canonical" href="https://glarebeautystudio.com/">
+<link rel="icon" href="img/sitio/icono.png">
+<link rel="apple-touch-icon" href="img/sitio/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Glare Beauty Studio · Otavalo">
+<meta property="og:description" content="Donde la belleza se encuentra con el arte. Reserva tu cita por WhatsApp.">
+<meta property="og:image" content="https://glarebeautystudio.com/img/sitio/og.jpg">
+<meta property="og:url" content="https://glarebeautystudio.com/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Manrope:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="assets/css/estilos.css">
+<link rel="preload" href="contenido.json" as="fetch" crossorigin>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BeautySalon",
+  "name": "Glare Beauty Studio",
+  "url": "https://glarebeautystudio.com/",
+  "image": "https://glarebeautystudio.com/img/sitio/og.jpg",
+  "telephone": "+593967929097",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Bolívar 8-09 y Juan Montalvo, edificio SportCiman, 2do piso",
+    "addressLocality": "Otavalo",
+    "addressRegion": "Imbabura",
+    "postalCode": "100201",
+    "addressCountry": "EC"
+  },
+  "sameAs": [
+    "https://www.instagram.com/glare.beauty.studio/",
+    "https://www.facebook.com/profile.php?id=61568508326426",
+    "https://www.tiktok.com/@glare.beauty.studio"
+  ]
+}
+</script>
 </head>
-
 <body>
+<a class="saltar" href="#principal">Saltar al contenido</a>
 
-    <!-- Header -->
-    <header>
-        <div class="container navbar">
-            <a href="index.html" class="logo-link">
-                <img src="img/logo/Logo1.png" alt="Glare Beauty Studio" class="logo-img">
-            </a>
+<header class="barra" id="barra">
+  <a class="barra-logo" href="#inicio" aria-label="Glare Beauty Studio, inicio"><img src="img/sitio/logo.webp" alt="Glare Beauty Studio" width="500" height="283"></a>
+  <nav class="barra-menu" id="menu" aria-label="Principal">
+    <a href="#servicios">Servicios</a>
+    <a href="#galeria">Galería</a>
+    <a href="#equipo">Equipo</a>
+    <a href="#visitanos">Visítanos</a>
+    <a class="boton boton-chico" data-reservar href="#">Reservar</a>
+  </nav>
+  <button class="barra-toggle" id="abrir-menu" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu"><span></span><span></span></button>
+</header>
 
-            <ul class="nav-menu">
-                <li><a href="index.html" class="nav-link active">Inicio</a></li>
-                <li><a href="servicios.html" class="nav-link">Servicios</a></li>
-                <li><a href="galeria.html" class="nav-link">Galería</a></li>
-                <li><a href="contacto.html" class="nav-link">Contacto</a></li>
-            </ul>
+<main id="principal">
+  <section class="hero" id="inicio">
+    <div class="hero-escena" id="escena" aria-hidden="true"></div>
+    <div class="hero-texto">
+      <p class="estado" id="estado" hidden><span class="punto"></span><span id="estado-texto"></span></p>
+      <h1>Donde la belleza<br>se encuentra con <em>el arte</em>.</h1>
+      <p class="hero-sub" data-texto="marca.descripcion">En Glare Beauty Studio resaltamos tu belleza natural con técnicas avanzadas y productos de alta calidad.</p>
+      <div class="hero-acciones">
+        <a class="boton" data-reservar href="#">Reservar por WhatsApp</a>
+        <a class="boton boton-fantasma" href="#servicios">Ver servicios</a>
+      </div>
+    </div>
+    <a class="hero-bajar" href="#cinta" aria-label="Bajar"><span></span></a>
+  </section>
 
-            <div class="hamburger">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
-        </div>
-    </header>
+  <div class="cinta" id="cinta" aria-hidden="true"><div class="cinta-pista" id="cinta-pista"></div></div>
 
-    <!-- Hero -->
-    <section class="hero">
-        <div class="hero-overlay"></div>
-        <div class="hero-content">
-            <h1>GLARE BEAUTY STUDIO</h1>
-            <p>Donde la belleza se encuentra con el arte.</p>
-            <a href="contacto.html" class="btn">Reservar Cita</a>
-        </div>
-    </section>
+  <section class="estudio seccion" id="estudio">
+    <div class="estudio-foto revelar" data-inclinar>
+      <img src="img/sitio/local.webp" alt="Interior del estudio Glare Beauty Studio" width="1800" height="1320" loading="lazy">
+      <span class="brillo"></span>
+    </div>
+    <div class="estudio-texto revelar">
+      <p class="antetitulo">El estudio</p>
+      <h2>Tu espacio de belleza en <em>Otavalo</em></h2>
+      <p data-texto="marca.descripcion"></p>
+      <ul class="pilares">
+        <li><b>Técnicas actuales</b><span>Capacitación constante para traerte lo último.</span></li>
+        <li><b>Productos de calidad</b><span>Cuidamos tu piel, tus uñas y tus pestañas.</span></li>
+        <li><b>Ambiente relajante</b><span>Un momento solo para ti, sin prisas.</span></li>
+      </ul>
+    </div>
+  </section>
 
-    <!-- Intro -->
-    <section class="section-padding text-center container">
-        <span class="section-subtitle">Bienvenidos</span>
-        <h2 class="section-title">Tu Espacio de Belleza en Otavalo</h2>
-        <p class="intro-text">
-            En Glare Beauty Studio, nos dedicamos a resaltar tu belleza natural con técnicas avanzadas y productos de
-            alta calidad.
-            Un ambiente relajante y profesional te espera.
-        </p>
-    </section>
+  <section class="servicios seccion" id="servicios">
+    <div class="cabecera revelar">
+      <p class="antetitulo">Menú de tratamientos</p>
+      <h2>Servicios que <em>brillan</em></h2>
+    </div>
+    <div class="pestanas" id="pestanas" role="tablist" aria-label="Categorías"></div>
+    <div class="tarjetas" id="tarjetas"></div>
+  </section>
 
-    <!-- Featured Services -->
-    <section class="featured-services section-padding">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-subtitle">Lo Mejor Para Ti</span>
-                <h2 class="section-title">Experiencias Glare</h2>
-            </div>
+  <section class="galeria seccion" id="galeria">
+    <div class="cabecera revelar">
+      <p class="antetitulo">Portafolio</p>
+      <h2>Nuestro <em>trabajo</em></h2>
+      <p class="pista">Arrastra para girar · toca una foto para verla en grande</p>
+    </div>
+    <div class="filtros" id="filtros" role="group" aria-label="Filtrar galería"></div>
+    <div class="carrusel" id="carrusel"><div class="anillo" id="anillo"></div></div>
+  </section>
 
-            <div class="grid-3">
-                <div class="service-item">
-                    <div class="service-icon"><i class="fas fa-hand-sparkles"></i></div>
-                    <h3>Uñas Acrílicas</h3>
-                    <p>Diseños personalizados y duraderos para lucir manos perfectas.</p>
-                </div>
-                <div class="service-item">
-                    <div class="service-icon"><i class="fas fa-eye"></i></div>
-                    <h3>Lifting de Pestañas</h3>
-                    <p>Realza tu mirada de forma natural y elegante.</p>
-                </div>
-                <div class="service-item">
-                    <div class="service-icon"><i class="fas fa-spa"></i></div>
-                    <h3>Limpieza Facial</h3>
-                    <p>Renueva tu piel con nuestros tratamientos profundos.</p>
-                </div>
-            </div>
+  <section class="equipo seccion" id="equipo">
+    <div class="cabecera revelar">
+      <p class="antetitulo">Las artistas</p>
+      <h2>Manos que <em>crean</em></h2>
+      <p class="pista">Toca una tarjeta para conocerlas</p>
+    </div>
+    <div class="equipo-lista" id="equipo-lista"></div>
+  </section>
 
-            <div class="text-center mt-50">
-                <a href="servicios.html" class="btn btn-outline">Ver Todos los Servicios</a>
-            </div>
-        </div>
-    </section>
+  <section class="pasos seccion" id="reservar">
+    <div class="cabecera revelar">
+      <p class="antetitulo">Reservar es fácil</p>
+      <h2>Tu cita en <em>tres pasos</em></h2>
+    </div>
+    <ol class="pasos-lista">
+      <li class="revelar"><span class="paso-num">01</span><h3>Escríbenos</h3><p>Toca «Reservar» y se abre WhatsApp con tu mensaje listo.</p></li>
+      <li class="revelar"><span class="paso-num">02</span><h3>Elige tu horario</h3><p>Nuestra asistente te muestra las horas libres y agenda al instante, a cualquier hora.</p></li>
+      <li class="revelar"><span class="paso-num">03</span><h3>Disfruta</h3><p>Llega, relájate y déjate consentir. Te esperamos.</p></li>
+    </ol>
+  </section>
 
-    <!-- Gallery Section (Home) -->
-    <section class="gallery-section section-padding">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-subtitle">Portafolio</span>
-                <h2 class="section-title">Nuestros Trabajos</h2>
-            </div>
-            <div class="gallery-grid">
-                <div class="gallery-item">
-                    <img src="img/nuestrotrabajos/Uñas.jpeg" alt="Uñas Glare Beauty">
-                    <div class="gallery-overlay">
-                        <h4>Uñas</h4>
-                    </div>
-                </div>
-                <div class="gallery-item">
-                    <img src="img/nuestrotrabajos/Maquillaje.jpeg" alt="Maquillaje Glare Beauty">
-                    <div class="gallery-overlay">
-                        <h4>Maquillaje</h4>
-                    </div>
-                </div>
-                <div class="gallery-item">
-                    <img src="img/nuestrotrabajos/Pestañas.jpeg" alt="Pestañas Glare Beauty">
-                    <div class="gallery-overlay">
-                        <h4>Pestañas</h4>
-                    </div>
-                </div>
-                <div class="gallery-item">
-                    <img src="img/nuestrotrabajos/Cejas.jpeg" alt="Cejas Glare Beauty">
-                    <div class="gallery-overlay">
-                        <h4>Cejas</h4>
-                    </div>
-                </div>
-                <div class="gallery-item">
-                    <img src="img/nuestrotrabajos/Facial.jpeg" alt="Facial Glare Beauty">
-                    <div class="gallery-overlay">
-                        <h4>Facial</h4>
-                    </div>
-                </div>
-                <div class="gallery-item">
-                    <img src="img/nuestrotrabajos/Uñas1.jpeg" alt="Diseño de Uñas">
-                    <div class="gallery-overlay">
-                        <h4>Diseños</h4>
-                    </div>
-                </div>
-            </div>
-            <div class="text-center mt-40">
-                <a href="galeria.html" class="btn">Ver Galería Completa</a>
-            </div>
-        </div>
-    </section>
+  <section class="visitanos seccion" id="visitanos">
+    <div class="visitanos-info revelar">
+      <p class="antetitulo">Visítanos</p>
+      <h2>Te esperamos en <em>el estudio</em></h2>
+      <p class="direccion" data-texto="contacto.direccion"></p>
+      <table class="horario" id="horario"><caption>Horario de atención</caption></table>
+      <div class="hero-acciones">
+        <a class="boton" data-reservar href="#">Reservar cita</a>
+        <a class="boton boton-fantasma" id="como-llegar" href="#" target="_blank" rel="noopener">Cómo llegar</a>
+      </div>
+    </div>
+    <div class="mapa revelar">
+      <iframe id="mapa" title="Ubicación de Glare Beauty Studio en el mapa" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </section>
 
-    <!-- Artist Highlight (Tabata) -->
-    <section class="artist-home">
-        <div class="artist-img"></div>
-        <div class="artist-content">
-            <span class="section-subtitle">La Artista</span>
-            <h2>Tabata Cartagena</h2>
-            <p>
-                Especialista en técnicas de uñas, Lashista y Cosmetóloga. Mi pasión es crear arte y belleza en cada
-                detalle.
-                Con años de experiencia y capacitación constante, garantizo resultados que superan tus expectativas.
-            </p>
-            <a href="contacto.html" class="btn">Agendar con Tabata</a>
-        </div>
-    </section>
+  <section class="preguntas seccion" id="preguntas">
+    <div class="cabecera revelar">
+      <p class="antetitulo">Dudas</p>
+      <h2>Preguntas <em>frecuentes</em></h2>
+    </div>
+    <div class="preguntas-lista" id="preguntas-lista"></div>
+  </section>
 
-    <!-- Artist Highlight (Danelly) -->
-    <section class="artist-home reverse">
-        <div class="artist-img danelly"></div>
-        <div class="artist-content">
-            <span class="section-subtitle">La Artista</span>
-            <h2>Danelly Arteaga</h2>
-            <p>
-                Maquilladora Profesional y Brow Artist, apasionada por resaltar tu esencia única. Con una sólida visión
-                estética y un dominio actualizado de las últimas tendencias, diseño looks que empoderan y transforman.
-                Déjate consentir y descubre la mejor versión de ti misma en mis manos.
-            </p>
-            <a href="contacto.html" class="btn">Agendar con Danelly</a>
-        </div>
-    </section>
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-col">
-                    <h4>Glare Beauty Studio</h4>
-                    <p class="text-muted-small">
-                        Calle Bolívar 8-09 entre Abdón Calderón y Juan Montalvo, edificio SportCiman 2do piso<br>
-                        <br>
-                        Otavalo, Imbabura, Ecuador<br>
-                        <br>
-                        beautystudioglare0@gmail.com
-                    </p>
-                </div>
-                <div class="footer-col">
-                    <h4>Enlaces</h4>
-                    <ul class="footer-links">
-                        <li><a href="index.html">Inicio</a></li>
-                        <li><a href="servicios.html">Servicios</a></li>
-                        <li><a href="galeria.html">Galería</a></li>
-                        <li><a href="contacto.html">Contacto</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Síguenos</h4>
-                    <div class="social-links">
-                        <a href="https://www.instagram.com/glare.beauty.studio/" target="_blank"><i
-                                class="fab fa-instagram"></i></a>
-                        <a href="https://www.facebook.com/profile.php?id=61568508326426" target="_blank"><i
-                                class="fab fa-facebook"></i></a>
-                        <a href="https://www.tiktok.com/@glare.beauty.studio?is_from_webapp=1&sender_device=pc"
-                            target="_blank"><i class="fab fa-tiktok"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="copyright">&copy; 2026 Glare Beauty Studio. Todos los derechos reservados.</div>
-        </div>
-    </footer>
+  <section class="final">
+    <h2 class="revelar">¿Lista para <em>brillar</em>?</h2>
+    <a class="boton boton-claro revelar" data-reservar href="#">Reserva tu cita ahora</a>
+  </section>
+</main>
 
+<footer class="pie">
+  <div class="pie-marca">
+    <img id="acceso" src="img/sitio/logo-claro.webp" alt="Glare Beauty Studio" width="500" height="283" draggable="false">
+    <p data-texto="marca.eslogan"></p>
+  </div>
+  <div class="pie-col">
+    <h3>Contacto</h3>
+    <a id="pie-whatsapp" href="#">WhatsApp</a>
+    <a id="pie-email" href="#"></a>
+    <p data-texto="contacto.direccion"></p>
+  </div>
+  <div class="pie-col">
+    <h3>Síguenos</h3>
+    <div class="redes" id="redes"></div>
+  </div>
+  <p class="pie-legal">© <span id="anio"></span> Glare Beauty Studio · <a href="privacidad.html">Política de privacidad</a></p>
+</footer>
 
+<a class="fab" data-reservar href="#" aria-label="Escríbenos por WhatsApp">
+  <svg viewBox="0 0 32 32" width="28" height="28" aria-hidden="true"><path fill="currentColor" d="M16 3a13 13 0 0 0-11.3 19.4L3 29l6.8-1.8A13 13 0 1 0 16 3Zm0 23.7a10.7 10.7 0 0 1-5.5-1.5l-.4-.2-4 1 1.1-3.9-.3-.4A10.7 10.7 0 1 1 16 26.7Zm5.9-8c-.3-.2-1.9-.9-2.2-1s-.5-.2-.7.2-.8 1-1 1.2-.4.2-.7 0a8.8 8.8 0 0 1-4.4-3.8c-.3-.6.3-.5.9-1.7a.6.6 0 0 0 0-.5l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6a1.2 1.2 0 0 0-.9.4 3.6 3.6 0 0 0-1.1 2.7 6.3 6.3 0 0 0 1.3 3.3 14.4 14.4 0 0 0 5.5 4.9c2 .9 2.9.9 3.9.8a3.3 3.3 0 0 0 2.2-1.6 2.7 2.7 0 0 0 .2-1.5c-.1-.2-.3-.3-.7-.5Z"/></svg>
+</a>
 
-    <script src="js/script.js"></script>
+<dialog class="visor" id="visor" aria-label="Foto ampliada">
+  <button class="visor-cerrar" id="visor-cerrar" aria-label="Cerrar">×</button>
+  <button class="visor-nav anterior" id="visor-anterior" aria-label="Foto anterior">‹</button>
+  <figure><img id="visor-img" alt=""><figcaption id="visor-titulo"></figcaption></figure>
+  <button class="visor-nav siguiente" id="visor-siguiente" aria-label="Foto siguiente">›</button>
+</dialog>
+
+<script src="assets/js/app.js" defer></script>
 </body>
-
 </html>
