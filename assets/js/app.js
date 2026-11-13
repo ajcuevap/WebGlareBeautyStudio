@@ -34,9 +34,12 @@
   function pintarEstado(horario) {
     const { dia, minutos } = ahoraEnSalon();
     const hoy = horario[dia];
-    const abierto = hoy && minutos >= aMinutos(hoy.inicio) && minutos < aMinutos(hoy.fin);
+    const enHorario = hoy && minutos >= aMinutos(hoy.inicio) && minutos < aMinutos(hoy.fin);
+    const enAlmuerzo = enHorario && hoy.descansoInicio && minutos >= aMinutos(hoy.descansoInicio) && minutos < aMinutos(hoy.descansoFin);
+    const abierto = enHorario && !enAlmuerzo;
     let texto;
-    if (abierto) texto = `Abierto ahora · hasta las ${hoy.fin}`;
+    if (enAlmuerzo) texto = `En almuerzo · volvemos a las ${hoy.descansoFin}`;
+    else if (abierto) texto = `Abierto ahora · hasta las ${hoy.descansoInicio && minutos < aMinutos(hoy.descansoInicio) ? hoy.descansoInicio : hoy.fin}`;
     else {
       const inicioIdx = DIAS.indexOf(dia);
       for (let i = 0; i < 7; i += 1) {
@@ -58,7 +61,8 @@
     const { dia } = ahoraEnSalon();
     $('#horario').replaceChildren(...[...DIAS.slice(1), 'domingo'].map((nombre) => {
       const h = horario[nombre];
-      return crear('tr', { class: nombre === dia ? 'hoy' : '' }, crear('th', { scope: 'row', text: NOMBRES_DIA[nombre] }), crear('td', { text: h ? `${h.inicio} – ${h.fin}` : 'Cerrado' }));
+      const horas = !h ? 'Cerrado' : h.descansoInicio ? `${h.inicio} – ${h.descansoInicio} · ${h.descansoFin} – ${h.fin}` : `${h.inicio} – ${h.fin}`;
+      return crear('tr', { class: nombre === dia ? 'hoy' : '' }, crear('th', { scope: 'row', text: NOMBRES_DIA[nombre] }), crear('td', { text: horas }));
     }));
   }
 
