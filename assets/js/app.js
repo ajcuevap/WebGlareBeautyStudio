@@ -21,7 +21,9 @@
 
   const leer = (obj, ruta) => ruta.split('.').reduce((o, k) => (o ? o[k] : undefined), obj);
   const enlaceWhatsApp = (numero, texto) => `https://wa.me/${numero}?text=${encodeURIComponent(texto)}`;
-  const precioTexto = (precio) => (typeof precio === 'number' ? `$${precio % 1 ? precio.toFixed(2) : precio}` : 'Consultar');
+  const precioTexto = (valor, desde) => (typeof valor === 'number' ? `${desde ? 'Desde ' : ''}$${valor % 1 ? valor.toFixed(2) : valor}` : 'A consultar');
+  // 90 -> "1 h 30 min"
+  const duracionTexto = (minutos) => [Math.floor(minutos / 60) ? `${Math.floor(minutos / 60)} h` : '', minutos % 60 ? `${minutos % 60} min` : ''].filter(Boolean).join(' ');
 
   // ---------- Hora local del salón ----------
   function ahoraEnSalon() {
@@ -90,13 +92,13 @@
     function mostrar() {
       pestanas.querySelectorAll('button').forEach((b) => b.setAttribute('aria-selected', String(b.dataset.cat === actual)));
       tarjetas.replaceChildren(...servicios.filter((s) => s.categoria === actual).map((s, i) => {
-        const duracion = s.duracionMinutos ? `${s.duracionMinutos} min` : 'Duración a consultar';
+        const duracion = s.duracionMinutos ? duracionTexto(s.duracionMinutos) : 'Duración a consultar';
         const tarjeta = crear('article', { class: 'tarjeta', style: `animation-delay:${i * 60}ms` },
           crear('span', { class: 'cat', text: s.categoria }),
           crear('h3', { text: s.nombre }),
           crear('p', { text: s.descripcion || '' }),
           crear('div', { class: 'pie-tarjeta' },
-            crear('div', { class: 'precio', text: precioTexto(s.precio) }, crear('small', { text: duracion })),
+            crear('div', { class: 'precio', text: precioTexto(s.precio, s.precioDesde) }, crear('small', { text: duracion })),
             crear('a', { class: 'boton', href: enlaceWhatsApp(whatsapp, `Hola, quiero agendar: ${s.nombre}`), target: '_blank', rel: 'noopener', text: 'Reservar' })),
           crear('span', { class: 'brillo' }));
         inclinar(tarjeta, 10);
