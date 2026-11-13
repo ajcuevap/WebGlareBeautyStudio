@@ -70,6 +70,6 @@
     { "pregunta": "¿Qué formas de pago aceptan?", "respuesta": "Aceptamos efectivo y transferencia bancaria." },
     { "pregunta": "¿Cómo cancelo o cambio mi cita?", "respuesta": "Escríbenos por WhatsApp que quieres cancelar o cambiar tu cita y te ayudamos con gusto." }
   ],
-  "panelUrl": "https://glare-chatbot.onrender.com/panel/#web",
+  "panelUrl": "/panel/",
   "actualizado": "2026-11-12T12:00:00-05:00"
 }
