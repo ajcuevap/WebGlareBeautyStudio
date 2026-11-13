@@ -14,40 +14,224 @@
     "tiktok": "https://www.tiktok.com/@glare.beauty.studio"
   },
   "horario": {
-    "lunes": { "inicio": "09:00", "fin": "19:00" },
-    "martes": { "inicio": "09:00", "fin": "19:00" },
-    "miercoles": { "inicio": "09:00", "fin": "19:00" },
-    "jueves": { "inicio": "09:00", "fin": "19:00" },
-    "viernes": { "inicio": "09:00", "fin": "19:00" },
-    "sabado": { "inicio": "09:00", "fin": "17:00" },
+    "lunes": {
+      "inicio": "09:00",
+      "fin": "19:00"
+    },
+    "martes": {
+      "inicio": "09:00",
+      "fin": "19:00"
+    },
+    "miercoles": {
+      "inicio": "09:00",
+      "fin": "19:00"
+    },
+    "jueves": {
+      "inicio": "09:00",
+      "fin": "19:00"
+    },
+    "viernes": {
+      "inicio": "09:00",
+      "fin": "19:00"
+    },
+    "sabado": {
+      "inicio": "09:00",
+      "fin": "17:00"
+    },
     "domingo": null
   },
   "servicios": [
-    { "id": "unas-acrilicas", "categoria": "Uñas", "nombre": "Uñas acrílicas", "descripcion": "Esculturales o con tip, acabado natural o color.", "precio": null, "duracionMinutos": null },
-    { "id": "polygel", "categoria": "Uñas", "nombre": "Polygel", "descripcion": "Técnica híbrida, ligera y resistente.", "precio": null, "duracionMinutos": null },
-    { "id": "softgel", "categoria": "Uñas", "nombre": "Softgel", "descripcion": "Tips completos de gel, aplicación rápida y resistente.", "precio": null, "duracionMinutos": null },
-    { "id": "semipermanente", "categoria": "Uñas", "nombre": "Semipermanente", "descripcion": "Esmaltado de larga duración sobre uña natural.", "precio": null, "duracionMinutos": null },
-    { "id": "lifting-pestanas", "categoria": "Pestañas", "nombre": "Lifting de pestañas", "descripcion": "Elevación natural de tus propias pestañas.", "precio": null, "duracionMinutos": null },
-    { "id": "extensiones-pelo-a-pelo", "categoria": "Pestañas", "nombre": "Extensiones pelo a pelo", "descripcion": "Efecto personalizado, una o varias extensiones sobre cada pestaña natural.", "precio": null, "duracionMinutos": null },
-    { "id": "diseno-depilacion-cejas", "categoria": "Cejas", "nombre": "Diseño y depilación", "descripcion": "Perfilado según tu rostro con cera o hilo.", "precio": null, "duracionMinutos": null },
-    { "id": "laminado-cejas", "categoria": "Cejas", "nombre": "Laminado de cejas", "descripcion": "Alisado y fijación para unas cejas más definidas y ordenadas.", "precio": null, "duracionMinutos": null },
-    { "id": "henna-cejas", "categoria": "Cejas", "nombre": "Henna", "descripcion": "Pigmentación con henna.", "precio": null, "duracionMinutos": null },
-    { "id": "maquillaje-social", "categoria": "Maquillaje", "nombre": "Maquillaje social", "descripcion": "Para eventos de día o de noche.", "precio": null, "duracionMinutos": null },
-    { "id": "maquillaje-novia", "categoria": "Maquillaje", "nombre": "Maquillaje de novia", "descripcion": "Paquete especial para tu gran día.", "precio": null, "duracionMinutos": null },
-    { "id": "maquillaje-editorial", "categoria": "Maquillaje", "nombre": "Maquillaje editorial", "descripcion": "Diseñado para destacar en fotografías.", "precio": null, "duracionMinutos": null },
-    { "id": "limpieza-facial-simple", "categoria": "Facial", "nombre": "Limpieza facial simple", "descripcion": "Limpieza básica para refrescar la piel.", "precio": null, "duracionMinutos": null },
-    { "id": "limpieza-facial-profunda", "categoria": "Facial", "nombre": "Limpieza facial profunda", "descripcion": "Limpieza intensiva para desintoxicar y retirar impurezas.", "precio": null, "duracionMinutos": null }
+    {
+      "id": "diseno-depilacion-cejas",
+      "categoria": "Cejas",
+      "nombre": "Diseño y depilación",
+      "descripcion": "Perfilado según tu rostro con cera o hilo.",
+      "precio": 10,
+      "precioDesde": false,
+      "duracionMinutos": 60
+    },
+    {
+      "id": "henna-cejas",
+      "categoria": "Cejas",
+      "nombre": "Henna",
+      "descripcion": "Pigmentación con henna.",
+      "precio": 5,
+      "precioDesde": false,
+      "duracionMinutos": 60
+    },
+    {
+      "id": "laminado-cejas",
+      "categoria": "Cejas",
+      "nombre": "Laminado de cejas",
+      "descripcion": "Alisado y fijación para unas cejas más definidas y ordenadas.",
+      "precio": 20,
+      "precioDesde": false,
+      "duracionMinutos": 120
+    },
+    {
+      "id": "limpieza-facial-profunda",
+      "categoria": "Facial",
+      "nombre": "Limpieza facial profunda",
+      "descripcion": "Limpieza intensiva para desintoxicar y retirar impurezas.",
+      "precio": null,
+      "precioDesde": false,
+      "duracionMinutos": null
+    },
+    {
+      "id": "limpieza-facial-simple",
+      "categoria": "Facial",
+      "nombre": "Limpieza facial simple",
+      "descripcion": "Limpieza básica para refrescar la piel.",
+      "precio": null,
+      "precioDesde": false,
+      "duracionMinutos": null
+    },
+    {
+      "id": "maquillaje-novia",
+      "categoria": "Maquillaje",
+      "nombre": "Maquillaje de novia",
+      "descripcion": "Paquete especial para tu gran día.",
+      "precio": null,
+      "precioDesde": false,
+      "duracionMinutos": null
+    },
+    {
+      "id": "maquillaje-editorial",
+      "categoria": "Maquillaje",
+      "nombre": "Maquillaje editorial",
+      "descripcion": "Diseñado para destacar en fotografías.",
+      "precio": null,
+      "precioDesde": false,
+      "duracionMinutos": null
+    },
+    {
+      "id": "maquillaje-social",
+      "categoria": "Maquillaje",
+      "nombre": "Maquillaje social",
+      "descripcion": "Para eventos de día o de noche.",
+      "precio": null,
+      "precioDesde": false,
+      "duracionMinutos": null
+    },
+    {
+      "id": "extensiones-pelo-a-pelo",
+      "categoria": "Pestañas",
+      "nombre": "Extensiones pelo a pelo",
+      "descripcion": "Efecto personalizado, una o varias extensiones sobre cada pestaña natural.",
+      "precio": 40,
+      "precioDesde": false,
+      "duracionMinutos": 120
+    },
+    {
+      "id": "lifting-pestanas",
+      "categoria": "Pestañas",
+      "nombre": "Lifting de pestañas",
+      "descripcion": "Elevación natural de tus propias pestañas.",
+      "precio": 15,
+      "precioDesde": false,
+      "duracionMinutos": 120
+    },
+    {
+      "id": "gel-overlay-476e47",
+      "categoria": "Uñas",
+      "nombre": "Gel Overlay",
+      "descripcion": "Es una técnica de manicura que utiliza gel para crear uñas resistentes, duraderas, con un acabado hermoso y natural.",
+      "precio": 23,
+      "precioDesde": false,
+      "duracionMinutos": 120
+    },
+    {
+      "id": "polygel",
+      "categoria": "Uñas",
+      "nombre": "Polygel",
+      "descripcion": "Técnica ligera y resistente. Acabados naturales y elegantes.",
+      "precio": 24,
+      "precioDesde": false,
+      "duracionMinutos": 120
+    },
+    {
+      "id": "semipermanente",
+      "categoria": "Uñas",
+      "nombre": "Semipermanente",
+      "descripcion": "Esmaltado con gel de larga duración sobre uña natural.",
+      "precio": 13,
+      "precioDesde": false,
+      "duracionMinutos": 120
+    },
+    {
+      "id": "softgel",
+      "categoria": "Uñas",
+      "nombre": "Softgel",
+      "descripcion": "Tips completos de gel, aplicación rápida y resistente.",
+      "precio": 20,
+      "precioDesde": false,
+      "duracionMinutos": 120
+    },
+    {
+      "id": "unas-acrilicas",
+      "categoria": "Uñas",
+      "nombre": "Uñas acrílicas",
+      "descripcion": "Esculturales o con tip, acabado natural o color.",
+      "precio": 25,
+      "precioDesde": true,
+      "duracionMinutos": 150
+    }
   ],
   "galeria": [
-    { "id": "unas-1", "src": "img/galeria/unas-1.webp", "categoria": "Uñas", "titulo": "Uñas acrílicas" },
-    { "id": "maquillaje-1", "src": "img/galeria/maquillaje-1.webp", "categoria": "Maquillaje", "titulo": "Maquillaje social" },
-    { "id": "unas-2", "src": "img/galeria/unas-2.webp", "categoria": "Uñas", "titulo": "Nail art" },
-    { "id": "pestanas-1", "src": "img/galeria/pestanas-1.webp", "categoria": "Pestañas", "titulo": "Lifting de pestañas" },
-    { "id": "unas-3", "src": "img/galeria/unas-3.webp", "categoria": "Uñas", "titulo": "Manicura rusa" },
-    { "id": "facial-1", "src": "img/galeria/facial-1.webp", "categoria": "Facial", "titulo": "Limpieza facial" },
-    { "id": "unas-4", "src": "img/galeria/unas-4.webp", "categoria": "Uñas", "titulo": "Diseño a mano alzada" },
-    { "id": "cejas-1", "src": "img/galeria/cejas-1.webp", "categoria": "Cejas", "titulo": "Diseño de cejas" },
-    { "id": "unas-5", "src": "img/galeria/unas-5.webp", "categoria": "Uñas", "titulo": "Acabado natural" }
+    {
+      "id": "unas-1",
+      "src": "img/galeria/unas-1.webp",
+      "categoria": "Uñas",
+      "titulo": "Uñas acrílicas"
+    },
+    {
+      "id": "maquillaje-1",
+      "src": "img/galeria/maquillaje-1.webp",
+      "categoria": "Maquillaje",
+      "titulo": "Maquillaje social"
+    },
+    {
+      "id": "pestanas-1",
+      "src": "img/galeria/pestanas-1.webp",
+      "categoria": "Pestañas",
+      "titulo": "Lifting de pestañas"
+    },
+    {
+      "id": "unas-2",
+      "src": "img/galeria/unas-2.webp",
+      "categoria": "Uñas",
+      "titulo": "Nail art"
+    },
+    {
+      "id": "unas-3",
+      "src": "img/galeria/unas-3.webp",
+      "categoria": "Uñas",
+      "titulo": "Manicura rusa"
+    },
+    {
+      "id": "facial-1",
+      "src": "img/galeria/facial-1.webp",
+      "categoria": "Facial",
+      "titulo": "Limpieza facial"
+    },
+    {
+      "id": "unas-4",
+      "src": "img/galeria/unas-4.webp",
+      "categoria": "Uñas",
+      "titulo": "Diseño a mano alzada"
+    },
+    {
+      "id": "cejas-1",
+      "src": "img/galeria/cejas-1.webp",
+      "categoria": "Cejas",
+      "titulo": "Diseño de cejas"
+    },
+    {
+      "id": "unas-5",
+      "src": "img/galeria/unas-5.webp",
+      "categoria": "Uñas",
+      "titulo": "Acabado natural"
+    }
   ],
   "equipo": [
     {
@@ -66,10 +250,18 @@
     }
   ],
   "preguntas": [
-    { "pregunta": "¿Dónde queda el local?", "respuesta": "Estamos en Bolívar 8-09 y Juan Montalvo, edificio SportCiman, 2do piso, en Otavalo." },
-    { "pregunta": "¿Qué formas de pago aceptan?", "respuesta": "Aceptamos efectivo y transferencia bancaria." },
-    { "pregunta": "¿Cómo cancelo o cambio mi cita?", "respuesta": "Escríbenos por WhatsApp que quieres cancelar o cambiar tu cita y te ayudamos con gusto." }
+    {
+      "pregunta": "¿Dónde queda el local?",
+      "respuesta": "Estamos en Bolívar 8-09 y Juan Montalvo, edificio SportCiman, 2do piso.\nhttps://maps.app.goo.gl/5fciF3PKm6HnDRLV9"
+    },
+    {
+      "pregunta": "¿Qué formas de pago aceptan?",
+      "respuesta": "Aceptamos efectivo y transferencia bancaria."
+    },
+    {
+      "pregunta": "¿Cómo cancelo o cambio mi cita?",
+      "respuesta": "Escribe *menú*, entra a *Mis citas* y cancélala. Si quieres otro horario, cancela y reserva de nuevo."
+    }
   ],
-  "panelUrl": "/panel/",
-  "actualizado": "2026-11-12T12:00:00-05:00"
+  "panelUrl": "/panel/"
 }
