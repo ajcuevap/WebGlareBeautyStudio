@@ -56,11 +56,10 @@
 
   function pintarHorario(horario) {
     const { dia } = ahoraEnSalon();
-    const tabla = $('#horario');
-    for (const nombre of [...DIAS.slice(1), 'domingo']) {
+    $('#horario').replaceChildren(...[...DIAS.slice(1), 'domingo'].map((nombre) => {
       const h = horario[nombre];
-      tabla.append(crear('tr', { class: nombre === dia ? 'hoy' : '' }, crear('th', { scope: 'row', text: NOMBRES_DIA[nombre] }), crear('td', { text: h ? `${h.inicio} – ${h.fin}` : 'Cerrado' })));
-    }
+      return crear('tr', { class: nombre === dia ? 'hoy' : '' }, crear('th', { scope: 'row', text: NOMBRES_DIA[nombre] }), crear('td', { text: h ? `${h.inicio} – ${h.fin}` : 'Cerrado' }));
+    }));
   }
 
   // ---------- Inclinación 3D con destello ----------
@@ -284,17 +283,21 @@
     import('./escena.js').then((m) => m.iniciar(contenedor, { reducirMovimiento })).catch(() => contenedor.classList.add('sin-3d'));
   }
 
-  async function iniciar() {
-    interfaz();
-    escena3D();
-    let datos;
-    try {
-      const respuesta = await fetch('contenido.json', { cache: 'no-cache' });
-      datos = await respuesta.json();
-    } catch {
-      revelar();
-      return;
-    }
+  // Datos en vivo desde el panel (AJAX). Si el servidor tarda en despertar, se muestra primero
+  // contenido.json y luego se actualiza con lo último que guardó el panel.
+  const EN_VIVO = '/panel/api/publico/contenido';
+  const ESPERA_EN_VIVO_MS = 3500;
+
+  async function obtenerDatos() {
+    const enVivo = fetch(EN_VIVO, { cache: 'no-store' }).then((r) => (r.ok ? r.json() : Promise.reject(new Error(r.status))));
+    const rapido = await Promise.race([enVivo, new Promise((resolve) => { setTimeout(resolve, ESPERA_EN_VIVO_MS, null); })]).catch(() => null);
+    if (rapido) return { datos: rapido };
+    const respaldo = await (await fetch('contenido.json', { cache: 'no-cache' })).json();
+    return { datos: respaldo, despues: enVivo.catch(() => null) };
+  }
+
+  // Partes que cambian desde el panel; se pueden volver a pintar sin recargar
+  function pintarDatos(datos) {
     const { contacto } = datos;
     document.querySelectorAll('[data-texto]').forEach((el) => { const v = leer(datos, el.dataset.texto); if (v) el.textContent = v; });
     document.querySelectorAll('[data-reservar]').forEach((a) => {
@@ -303,16 +306,32 @@
       a.rel = 'noopener';
     });
     $('#como-llegar').href = contacto.mapa;
-    $('#mapa').src = `https://www.google.com/maps?q=${encodeURIComponent(contacto.direccion)}&output=embed`;
+    const mapa = `https://www.google.com/maps?q=${encodeURIComponent(contacto.direccion)}&output=embed`;
+    if ($('#mapa').src !== mapa) $('#mapa').src = mapa;
     pintarEstado(datos.horario);
     pintarHorario(datos.horario);
     pintarServicios(datos.servicios, contacto.whatsapp);
-    pintarGaleria(datos.galeria);
     pintarEquipo(datos.equipo, contacto.whatsapp);
     pintarPreguntas(datos.preguntas || []);
     pintarPie(contacto);
-    accesoOculto(datos.panelUrl);
     revelar();
+  }
+
+  async function iniciar() {
+    interfaz();
+    escena3D();
+    let carga;
+    try {
+      carga = await obtenerDatos();
+    } catch {
+      revelar();
+      return;
+    }
+    pintarDatos(carga.datos);
+    pintarGaleria(carga.datos.galeria);
+    accesoOculto(carga.datos.panelUrl);
+    const vivo = await carga.despues;
+    if (vivo) pintarDatos(vivo);
   }
 
   iniciar();
