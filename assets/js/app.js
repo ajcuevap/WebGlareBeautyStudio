@@ -21,7 +21,7 @@
 
   const leer = (obj, ruta) => ruta.split('.').reduce((o, k) => (o ? o[k] : undefined), obj);
   const enlaceWhatsApp = (numero, texto) => `https://wa.me/${numero}?text=${encodeURIComponent(texto)}`;
-  const precioTexto = (valor, desde) => (typeof valor === 'number' ? `${desde ? 'Desde ' : ''}$${valor % 1 ? valor.toFixed(2) : valor}` : 'A consultar');
+  const precioTexto = (valor) => (typeof valor === 'number' ? `$${valor % 1 ? valor.toFixed(2) : valor}` : 'A consultar');
   // 90 -> "1 h 30 min"
   const duracionTexto = (minutos) => [Math.floor(minutos / 60) ? `${Math.floor(minutos / 60)} h` : '', minutos % 60 ? `${minutos % 60} min` : ''].filter(Boolean).join(' ');
 
@@ -98,7 +98,10 @@
           crear('h3', { text: s.nombre }),
           crear('p', { text: s.descripcion || '' }),
           crear('div', { class: 'pie-tarjeta' },
-            crear('div', { class: 'precio', text: precioTexto(s.precio, s.precioDesde) }, crear('small', { text: duracion })),
+            crear('div', { class: 'precio' },
+              s.precioDesde && typeof s.precio === 'number' ? crear('span', { class: 'desde', text: 'Desde' }) : null,
+              precioTexto(s.precio),
+              crear('small', { text: duracion })),
             crear('a', { class: 'boton', href: enlaceWhatsApp(whatsapp, `Hola, quiero agendar: ${s.nombre}`), target: '_blank', rel: 'noopener', text: 'Reservar' })),
           crear('span', { class: 'brillo' }));
         inclinar(tarjeta, 10);
