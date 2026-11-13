@@ -284,12 +284,86 @@
   }
 
   // ---------- Escena 3D: solo si hay WebGL ----------
+  let escena = Promise.resolve(null);
   function escena3D() {
     const contenedor = $('#escena');
     const lienzo = document.createElement('canvas');
     const webgl = lienzo.getContext('webgl2') || lienzo.getContext('webgl');
     if (!webgl) { contenedor.classList.add('sin-3d'); return; }
-    import('./escena.js').then((m) => m.iniciar(contenedor, { reducirMovimiento })).catch(() => contenedor.classList.add('sin-3d'));
+    escena = import('./escena.js?v=2')
+      .then((m) => m.iniciar(contenedor, { reducirMovimiento }))
+      .catch(() => { contenedor.classList.add('sin-3d'); return null; });
+  }
+
+  // ---------- Decoración de temporada (la elige la dueña en el panel) ----------
+  const COLORES_LUCES = ['#F08FA6', '#E8C28E', '#FFFFFF', '#D95C78'];
+  const ESPACIO_ENTRE_LUCES_PX = 46;
+  const SALUDO_GALLETA_MS = 2500;
+  const GLOBO_VISIBLE_MS = 5000;
+
+  // Cable con curvas entre foco y foco, y un foco colgando en cada curva
+  function pintarLuces() {
+    const caja = $('#luces');
+    const cantidad = Math.max(6, Math.round(caja.clientWidth / ESPACIO_ENTRE_LUCES_PX));
+    const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    svg.setAttribute('viewBox', `0 0 ${cantidad * 10} 10`);
+    svg.setAttribute('preserveAspectRatio', 'none');
+    const cable = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    cable.setAttribute('d', `M0 0${Array.from({ length: cantidad }, () => ' q5 9 10 0').join('')}`);
+    svg.append(cable);
+    const focos = Array.from({ length: cantidad }, (_, i) => {
+      const foco = crear('span', { class: 'foco' });
+      foco.style.setProperty('--x', `${((i + 0.5) / cantidad) * 100}%`);
+      foco.style.setProperty('--y', '9px');
+      foco.style.setProperty('--c', COLORES_LUCES[i % COLORES_LUCES.length]);
+      foco.style.setProperty('--d', `${(Math.random() * 2.6).toFixed(2)}s`);
+      return foco;
+    });
+    caja.replaceChildren(svg, ...focos);
+  }
+
+  // Una sola vez: la guirnalda se reacomoda al cambiar el tamaño de la ventana, y la galleta
+  // se inclina hacia el puntero, saluda al aparecer y salta al tocarla
+  let navidadLista = false;
+  function prepararNavidad() {
+    if (navidadLista) return;
+    navidadLista = true;
+    addEventListener('resize', () => { if (document.documentElement.dataset.temporada === 'navidad') pintarLuces(); }, { passive: true });
+    const galleta = $('.galleta');
+    const globo = $('.globo');
+    addEventListener('pointermove', (e) => {
+      const caja = galleta.getBoundingClientRect();
+      const dx = (e.clientX - (caja.left + caja.width / 2)) / innerWidth;
+      const dy = (e.clientY - (caja.top + caja.height / 2)) / innerHeight;
+      galleta.style.setProperty('--ry', `${(dx * 50).toFixed(1)}deg`);
+      galleta.style.setProperty('--rx', `${(-dy * 40).toFixed(1)}deg`);
+    }, { passive: true });
+    $('.fab').addEventListener('click', () => {
+      galleta.classList.remove('saltando');
+      void galleta.offsetWidth;
+      galleta.classList.add('saltando');
+    });
+    if (reducirMovimiento) return;
+    setTimeout(() => {
+      galleta.classList.add('saludando');
+      globo.classList.add('visible');
+      setTimeout(() => { galleta.classList.remove('saludando'); globo.classList.remove('visible'); }, GLOBO_VISIBLE_MS);
+    }, SALUDO_GALLETA_MS);
+  }
+
+  function aplicarTemporada(temporada) {
+    const navidad = temporada === 'navidad';
+    if (navidad) document.documentElement.dataset.temporada = 'navidad';
+    else delete document.documentElement.dataset.temporada;
+    escena.then((control) => control?.navidad(navidad));
+    if (!navidad) return;
+    pintarLuces();
+    prepararNavidad();
+    // Saludo navideño intercalado en la cinta de servicios (la cinta repite su contenido dos veces para girar sin cortes)
+    const cinta = $('#cinta-pista');
+    const nombres = [...cinta.children].map((el) => el.textContent).filter((t) => t !== 'Felices fiestas');
+    const mitad = nombres.slice(0, nombres.length / 2).flatMap((nombre, i) => (i % 4 === 3 ? [nombre, 'Felices fiestas'] : [nombre]));
+    cinta.replaceChildren(...[...mitad, ...mitad].map((t) => crear('span', { text: t })));
   }
 
   // Datos en vivo desde el panel (AJAX). Si el servidor tarda en despertar, se muestra primero
@@ -323,6 +397,7 @@
     pintarEquipo(datos.equipo, contacto.whatsapp);
     pintarPreguntas(datos.preguntas || []);
     pintarPie(contacto);
+    aplicarTemporada(datos.temporada);
     revelar();
   }
 

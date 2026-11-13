@@ -263,5 +263,6 @@
       "respuesta": "Escribe *menú*, entra a *Mis citas* y cancélala. Si quieres otro horario, cancela y reserva de nuevo."
     }
   ],
+  "temporada": "ninguna",
   "panelUrl": "/panel/"
 }

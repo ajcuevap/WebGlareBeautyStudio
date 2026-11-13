@@ -44,6 +44,81 @@ function entornoDeEstudio(renderer) {
   return textura;
 }
 
+// ---------- Navidad: nieve, estrella y esferas navideñas ----------
+
+// Copo suave dibujado una vez y usado como textura de cada partícula
+function texturaCopo() {
+  const lienzo = document.createElement('canvas');
+  lienzo.width = lienzo.height = 64;
+  const ctx = lienzo.getContext('2d');
+  const brillo = ctx.createRadialGradient(32, 32, 0, 32, 32, 32);
+  brillo.addColorStop(0, 'rgba(255,255,255,1)');
+  brillo.addColorStop(0.35, 'rgba(255,245,248,.85)');
+  brillo.addColorStop(1, 'rgba(255,240,244,0)');
+  ctx.fillStyle = brillo;
+  ctx.fillRect(0, 0, 64, 64);
+  const textura = new THREE.CanvasTexture(lienzo);
+  textura.colorSpace = THREE.SRGBColorSpace;
+  return textura;
+}
+
+function crearNieve(cantidad) {
+  const posiciones = new Float32Array(cantidad * 3);
+  const datos = [];
+  for (let i = 0; i < cantidad; i += 1) {
+    posiciones.set([(Math.random() - 0.5) * 16, (Math.random() - 0.5) * 10, Math.random() * 7 - 4], i * 3);
+    datos.push({ caida: 0.25 + Math.random() * 0.45, fase: Math.random() * Math.PI * 2, vaiven: 0.15 + Math.random() * 0.35 });
+  }
+  const geometria = new THREE.BufferGeometry();
+  geometria.setAttribute('position', new THREE.BufferAttribute(posiciones, 3));
+  const puntos = new THREE.Points(geometria, new THREE.PointsMaterial({
+    size: 0.18, map: texturaCopo(), transparent: true, depthWrite: false, opacity: 1, color: '#ffffff',
+  }));
+  puntos.renderOrder = 2;
+  return { puntos, datos };
+}
+
+function moverNieve({ puntos, datos }, t, dt) {
+  const pos = puntos.geometry.attributes.position;
+  for (let i = 0; i < datos.length; i += 1) {
+    const d = datos[i];
+    let y = pos.getY(i) - d.caida * dt;
+    if (y < -5) y = 5;
+    pos.setY(i, y);
+    pos.setX(i, pos.getX(i) + Math.sin(t * d.vaiven + d.fase) * 0.004);
+  }
+  pos.needsUpdate = true;
+}
+
+function crearEstrella() {
+  const forma = new THREE.Shape();
+  for (let i = 0; i < 10; i += 1) {
+    const radio = i % 2 ? 0.17 : 0.4;
+    const angulo = (i / 10) * Math.PI * 2 + Math.PI / 2;
+    forma[i ? 'lineTo' : 'moveTo'](Math.cos(angulo) * radio, Math.sin(angulo) * radio);
+  }
+  const geometria = new THREE.ExtrudeGeometry(forma, { depth: 0.1, bevelEnabled: true, bevelThickness: 0.05, bevelSize: 0.04, bevelSegments: 4 });
+  geometria.center();
+  const estrella = new THREE.Mesh(geometria, new THREE.MeshPhysicalMaterial({
+    color: '#e8c28e', metalness: 1, roughness: 0.18, clearcoat: 1, emissive: '#c5908e', emissiveIntensity: 0.25,
+  }));
+  estrella.position.set(0, 1.15, 1);
+  estrella.scale.setScalar(0.7);
+  return estrella;
+}
+
+// Tapita dorada y argolla sobre cada perla que orbita: se vuelven esferas de árbol
+function crearTapa(radio) {
+  const dorado = new THREE.MeshPhysicalMaterial({ color: '#e8c28e', metalness: 1, roughness: 0.25 });
+  const tapa = new THREE.Group();
+  const cuello = new THREE.Mesh(new THREE.CylinderGeometry(radio * 0.32, radio * 0.36, radio * 0.32, 24), dorado);
+  cuello.position.y = radio * 0.98;
+  const argolla = new THREE.Mesh(new THREE.TorusGeometry(radio * 0.18, radio * 0.05, 12, 24), dorado);
+  argolla.position.y = radio * 1.3;
+  tapa.add(cuello, argolla);
+  return tapa;
+}
+
 export function iniciar(contenedor, { reducirMovimiento }) {
   const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: 'high-performance' });
   renderer.setPixelRatio(Math.min(devicePixelRatio, 1.75));
@@ -90,16 +165,33 @@ export function iniciar(contenedor, { reducirMovimiento }) {
   // Perlas pequeñas que orbitan
   const oro = new THREE.MeshPhysicalMaterial({ color: '#c5908e', metalness: 1, roughness: 0.22, clearcoat: 0.6 });
   const nacar = new THREE.MeshPhysicalMaterial({ color: '#fff4f4', roughness: 0.12, clearcoat: 1, iridescence: 1, iridescenceIOR: 1.6 });
+  const rubi = new THREE.MeshPhysicalMaterial({ color: '#c2405e', metalness: 0.4, roughness: 0.15, clearcoat: 1, clearcoatRoughness: 0.05 });
   const orbitas = [
     { r: 0.22, mat: oro, radio: 2.5, vel: 0.35, fase: 0, alto: 0.6 },
     { r: 0.14, mat: nacar, radio: 2.2, vel: -0.5, fase: 2, alto: -0.9 },
     { r: 0.1, mat: oro, radio: 2.9, vel: 0.25, fase: 4, alto: 1.3 },
     { r: 0.18, mat: nacar, radio: 3.1, vel: -0.2, fase: 5.2, alto: -0.2 },
   ].map((o) => {
-    const m = new THREE.Mesh(new THREE.SphereGeometry(o.r, 48, 48), o.mat);
-    escena.add(m);
-    return { ...o, malla: m };
+    const grupo = new THREE.Group();
+    const esfera = new THREE.Mesh(new THREE.SphereGeometry(o.r, 48, 48), o.mat);
+    const tapa = crearTapa(o.r);
+    tapa.visible = false;
+    grupo.add(esfera, tapa);
+    escena.add(grupo);
+    return { ...o, malla: grupo, esfera, tapa };
   });
+
+  // Decoración navideña: se agrega o se quita sin recargar la escena
+  const navidad = { activa: false, nieve: crearNieve(reducirMovimiento ? 160 : 420), estrella: crearEstrella() };
+  function ponerNavidad(activa) {
+    navidad.activa = activa;
+    escena[activa ? 'add' : 'remove'](navidad.nieve.puntos, navidad.estrella);
+    orbitas.forEach((o, i) => {
+      o.tapa.visible = activa;
+      o.esfera.material = activa && i % 2 === 0 ? rubi : o.mat;
+    });
+    if (reducirMovimiento) cuadro();
+  }
 
   const luzClave = new THREE.DirectionalLight('#ffffff', 1.6);
   luzClave.position.set(3, 4, 5);
@@ -129,8 +221,18 @@ export function iniciar(contenedor, { reducirMovimiento }) {
   }, { passive: true });
 
   const reloj = new THREE.Clock();
+  let anterior = 0;
   function cuadro() {
     const t = reloj.getElapsedTime();
+    const dt = Math.min(t - anterior, 0.05);
+    anterior = t;
+    if (navidad.activa) {
+      moverNieve(navidad.nieve, t, dt);
+      navidad.nieve.puntos.rotation.y = suave.x * 0.15;
+      navidad.estrella.rotation.y = Math.sin(t * 0.9) * 0.5;
+      navidad.estrella.position.y = perla.position.y + perla.scale.y * 1.25 + Math.sin(t * 1.4) * 0.06;
+      orbitas.forEach((o) => { o.malla.rotation.z = Math.sin(t * 1.2 + o.fase) * 0.25; });
+    }
     uniforms.uTiempo.value = t;
     suave.x += (puntero.x - suave.x) * 0.04;
     suave.y += (puntero.y - suave.y) * 0.04;
@@ -147,10 +249,11 @@ export function iniciar(contenedor, { reducirMovimiento }) {
     renderer.render(escena, camara);
   }
 
+  const control = { navidad: ponerNavidad };
   if (reducirMovimiento) {
     cuadro();
     renderer.domElement.style.opacity = '1';
-    return;
+    return control;
   }
 
   // Solo anima cuando la portada está a la vista y la pestaña está activa
@@ -161,4 +264,5 @@ export function iniciar(contenedor, { reducirMovimiento }) {
     cuadro();
   });
   requestAnimationFrame(() => { renderer.domElement.style.opacity = '1'; });
+  return control;
 }
